@@ -1,0 +1,55 @@
+h1{
+    text-align:center;
+    font-size:50px;
+    line-height: 30px;
+}
+
+p{
+    font-size: 20px;
+    text-align:center;
+    color: gray;
+}
+
+body{
+    margin:0;
+    text-align: center;
+}
+
+
+
+input{
+    width:600px;
+    padding:20px;
+    border:none;
+    color:inherit;
+}
+
+input::placeholder{
+    color:black;
+    font-weight:  bold;
+    font-size:18px;
+}
+
+input[id="save-id"]{
+    width:10px;
+    position:relative;
+    right:160px;
+    zoom: 1.5;
+}
+
+label[for="save-id"]{
+    font-size: 20px;
+    position:relative;
+    right:240px;
+}
+
+button{
+    background-color:blue;
+    color:white;
+    margin-top: 30px;
+    font-size:20px;
+    font:bolder;
+    width:500px;
+    height:50px;
+    border-radius:5px;
+}
