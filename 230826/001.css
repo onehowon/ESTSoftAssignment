@@ -1,0 +1,12 @@
+div #id{
+    color:green;
+  }
+  p{
+    color:black;
+  }
+  #id{
+    color:blue;
+  }
+  .class{
+    color:yellow;
+  }
