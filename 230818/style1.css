@@ -1,0 +1,7 @@
+div{
+    color: red;
+    border: 5px solid pink;
+
+}
+
+h1{border:inherit;}
