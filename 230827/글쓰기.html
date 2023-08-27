@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="글쓰기.css">
+    <title>글쓰기</title>
+</head>
+<body>
+    <h1>글쓰기</h1>
+    <p>내용을 입력해주세요</p>
+
+    <form action="/" method="GET">
+        <a class="category"><strong>카테고리</strong></a>
+        <select>
+            <option>일반</option>
+            <option>기술</option>
+            <option>질문</option>
+        </select>
+
+        <br>
+
+        <a><strong>제목</strong></a>
+        <label for="title"></label>
+        <input id="title" type="text" name="content" required>
+
+        <br>
+
+        <a><strong>내용</strong></a>
+        <label for="content"></label>
+        <input id="content" type="text" name="content" required>
+
+        <br>
+
+        <a><strong>파일첨부</strong></a>
+        <input class="file" type="file">
+
+        <nav>
+            <a href="/230817/">목록</a>
+            <input type="reset" value="초기화">
+            <input type="submit" value="작성">
+        </nav>
+
+
+    </form>
+</body>
+</html>

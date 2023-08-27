@@ -1,0 +1,107 @@
+/* 공통 스타일 */
+.label-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 가로 중앙 정렬 추가 */
+    margin-bottom: 10px;
+    text-align: center; /* 가운데 정렬 추가 */
+}
+
+.label-input-group label {
+    font-size: 20px;
+    display: block;
+    margin-right: 10px; /* 라벨과 입력란 사이의 간격을 조절합니다. */
+    line-height: 1.5;
+    text-align: right; /* 라벨의 텍스트를 오른쪽 정렬합니다. */
+}
+
+.label-input-group input {
+    width: 250px;
+    height: 20px;
+    display: block;
+    margin-left: 10px; /* 입력란과 라벨 사이의 간격을 조절합니다. */
+    margin-right: 10px; /* 입력란과 라벨 사이의 간격을 조절합니다. */
+}
+
+
+/* 개별 스타일 */
+#user-id-label,
+#user-email-label,
+#user-pw-label,
+#user-nickname-label {
+    left: 25%;
+}
+
+#user-id {
+    top: 0;
+}
+
+#user-email {
+    top: 200px;
+}
+
+#user-pw {
+    top: 240px;
+}
+
+#user-nickname {
+    top: 280px;
+}
+
+/* Form 스타일 */
+h1,
+form,
+p {
+    text-align: center;
+}
+
+/* Fieldset 스타일 */
+fieldset {
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+legend {
+    font-size: 20px;
+    border-style: none;
+    padding-top: 10px;
+    margin-right: 10px;
+}
+
+ul {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+
+li {
+    text-align: center;
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+    flex-grow: 1;
+}
+
+
+/* Button 스타일 */
+button {
+    width: 100%;
+    height: 50px;
+    background-color: blue;
+    color: white;
+    display: block; /* display를 block으로 변경 */
+    margin: 30px auto; /* auto로 설정하여 수평 가운데 정렬 */
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+
