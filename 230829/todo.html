@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+    <ul>
+
+    </ul>
+    <input type="text">
+    <button>버튼!</button>
+    
+</body>
+<script>
+    // todo list 만들기
+    // 내 화면의 버튼을 선택하여 가져옵니다.
+    // 내가 할일을 추가할 UL을 가져옵니다.
+    // 버튼을 클릭하면 인풋요소에 있는 텍스트를 추가합니다.
+    // -- 버튼을 클릭하면 생기는 일 -- (동작과정)
+    // li요소 내부에 들어갈 버튼을 만듭니다.
+    // 이 버튼은 li를 삭제하는 이벤트를 가지고있습니다.
+    // 버튼이 가지고있는 텍스트는 "완료입니다".
+    // 버튼을 li요소에 추가합니다.
+    // 인풋요소를 가져옵니다.
+    // 인풋 요소안의 값을 가져옵니다.
+    // 인풋 요소안의 값을 li에 추가합니다.
+    // 마지막으로 완성된 todo li를 ul에 추가합니다. 
+
+    const myBtn = document.querySelector("button");
+    const myUl = document.querySelector("ul");
+    const input = document.querySelector("input");
+
+    myBtn.addEventListener('click', function(){
+        const inputText = input.value;
+        if (inputText.trim()==="") {
+            return;
+        }
+        const myLi = document.createElement('li');
+        const btnDel = document.createElement('button');
+        const btnTxt = document.createTextNode('완료');
+        btnDel.append(btnTxt);
+        btnDel.addEventListener('click', ()=>{
+            myLi.remove();
+        });
+        myLi.append('할일: ',inputText, btnDel);
+        myUl.appendChild(myLi);
+    });
+</script>
+
+</html>
