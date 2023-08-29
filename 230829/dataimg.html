@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img class="terran battle-cruiser"
+    src="battle-cruiser.png"
+    data-ship-id="324"
+    data-weapons="laser"
+    data-health="400"
+    data-mana="250"
+    data-skill="yamato-canon"/>
+
+    <script>
+        const img = document.querySelector('img')
+        console.log(img.dataset);
+        console.log(img.dataset.shipId);
+    </script>
+    
+</body>
+</html>
