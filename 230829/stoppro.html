@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopPropagation</title>
+</head>
+<body>
+    <h1>나의 todo list</h1>
+    <p>1. 오늘 저녁에는 부대찌개를 끓여 먹겠다.<button type="button">삭제</button></p>
+    <p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+    <p>3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">삭제</button></p>
+
+    <script>
+        document.querySelectorAll('p').forEach(function(paragraph){
+            paragraph.addEventListener('click', function(){
+                var content = this.textContent;
+                alert(content); // 'alret' 대신에 'alert'를 사용해야 합니다.
+            });
+        });
+
+        document.querySelectorAll('button').forEach(function(but){
+            but.addEventListener('click', function(){
+                if(confirm("삭제하시겠습니까?")){
+                    var content = this.parentNode;
+                    content.remove();
+                    alert("삭제되었습니다.");
+                }else{
+                    alert("취소되었습니다.");
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
