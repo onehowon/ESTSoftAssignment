@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s = prompt();
+        let splistS = s.split(',');
+        console.log(splistS);
+        let sum = 0;
+        for( var variable of splistS){
+            sum += parseInt(variable, 10);
+        }
+        console.log(sum/splistS.length);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array = [10, 20, 30, 40, 50];
+        var i = 0
+        for(; i < array.length;){
+            document.write(array[i], '<br>');
+            i++;
+        } array.forEach(e => console.log(e*3));
+
+        for(var variable in array){
+            document.write(array[variable], '<br>');
+        }
+
+        for(var variable of array){
+            document.write(variable, '!! <br>');
+        }
+    </script>
+    
+</body>
+</html>
