@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div class="">
+        <form>
+            <input type="text">
+            <button type="submit">질문하기</button>
+        </form>
+        <div>"answer"</div>
+    </div>
+    <script>
+        const $input = document.querySelector('input')
+        const $button = document.querySelector('button')
+
+        const data = []
+        data.push({
+            "role" : "system",
+            "content" : "assistant는 점심시간 메뉴 추천해주는 요리사입니다."
+        })
+
+        const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`
+
+        $button.addEventListener('click', e=>{
+            e.preventDefault()
+            console.log($input.value)
+            $input.value=""
+        })
+    </script>
+    
+</body>
+</html>
