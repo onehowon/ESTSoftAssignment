@@ -1,36 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chatGPT 질문하기</title>
 </head>
+
 <body>
-    <div class="">
-        <form>
-            <input type="text">
-            <button type="submit">질문하기</button>
-        </form>
-        <div>"answer"</div>
-    </div>
-    <script>
-        const $input = document.querySelector('input')
-        const $button = document.querySelector('button')
+  <div class="container">
+    <form action="">
+      <input type="text">
+      <button type="submit">질문하기</button>
+    </form>
+    <div class="answer"></div>
+  </div>
+  <script>
+    const $input = document.querySelector('input');
+    const $button = document.querySelector('button');
+    const $answer = document.querySelector('.answer');
 
-        const data = []
-        data.push({
-            "role" : "system",
-            "content" : "assistant는 점심시간 메뉴 추천해주는 요리사입니다."
-        })
+    let data = [];
+    data.push({
+      "role": "system",
+      "content": "assistant는 제주 여행 전문가이다."
+    });
 
-        const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`
+    const url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
-        $button.addEventListener('click', e=>{
-            e.preventDefault()
-            console.log($input.value)
-            $input.value=""
-        })
-    </script>
-    
+    $button.addEventListener('click', e => {
+      e.preventDefault();  // refresh 막기
+      const contents = $input.value;
+      data.push({
+        "role":"user",
+        "content":contents
+      })
+      $input.value = "";
+      chatGPTAPI();
+    })
+
+    function chatGPTAPI() {
+      fetch(url, {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data),
+        redirect:'follow'
+      })
+      .then(res=>res.json())
+      .then(res => {
+        $answer.innerHTML = `<p>${res.choices[0].message.content}</p>`;
+      })
+    }
+  </script>
 </body>
+
 </html>
