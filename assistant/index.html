@@ -2,13 +2,53 @@
 <html>
 <head>
     <title>뉴스 기사 요약</title>
-</head>
     <style>
-        #h1{
-            text-align:center;
+        h1 {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column; /* 버튼과 텍스트 박스를 세로로 배열 */
+            align-items: center; /* 요소를 세로 가운데 정렬 */
+            gap: 20px;
+        }
+        .text-box {
+            width: 750px;
+            height: 300px;
+            border-radius: 1em;
+            margin: 20px;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px; /* 버튼 사이의 간격 조정 */
+        }
+        button {
+            background-color: #275efe;
+            color: #fff;
+            font-size: 20px;
+            padding: 16px 32px;
+            font-family: 'Roboto';
+            font-weight: 500;
+            line-height: var;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
+</head>
 <body>
     <h1>뉴스 기사를 요약해드릴게요!</h1>
+    <div class="container">
+        <textarea id="input-news" class="text-box" rows="10" cols="50" placeholder="기사를 복사하여 입력하세요..."></textarea>
+        <textarea id="output-summary" class="text-box" rows="10" cols="50" placeholder="요약 결과는 여기에 출력됩니다." readonly></textarea>
+    </div>
+    <div class="container">
+        <div class="button-container"> <!-- 버튼을 가로로 나열할 컨테이너 -->
+            <button id="summarize-button" type="submit">요약하기</button>
+            <button id="reset-button" type="reset">초기화</button>
+        </div>
+    </div>
+    <script type="module" src="test.js"></script>
 </body>
-</html>
+</html
