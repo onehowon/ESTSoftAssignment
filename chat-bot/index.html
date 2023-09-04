@@ -18,7 +18,7 @@
 
         .wrap{
             padding:40px 0;
-            background-color: #A8C0D6;
+            background-color: lightskyblue;
         }
 
         .wrap .chat{
@@ -31,13 +31,17 @@
         }
 
         .wrap .chat .icon{
-            position:relative;
+            position: relative;
             overflow: hidden;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             background-color: #eee;
             transform: translateX(-50%);
+
+            display:flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .wrap .chat .textbox{
@@ -68,8 +72,12 @@
             color: #ddd;
         }
 
+        .wrap .ch2{
+            flex-direction: row-reverse;
+        }
+
         .wrap .ch2 .textbox{
-            margin-right: 20px;
+            margin-right: 60px;
             background-color: #F9EB54;
         }
 
@@ -79,10 +87,19 @@
             color: #F9EB54;
         }
 
+
         .input{
             margin-top : 20px;
             margin-left : 20px;
             margin-right: 20px;
+        }
+
+        #user-input{
+            border-radius : 10px 0 0 10px;
+        }
+
+        #send-button{
+            border-radius : 0 10px 10px 0;
         }
     </style>
 
@@ -90,22 +107,26 @@
 </head>
 <body>
     <div class="wrap">
+        <!-- 대화 표시 영역 밑은 예제 -->
         <div class="chat ch1">
             <div class="icon"><i class="fa-solid fa-user"></i></div>
-            <div class="textbox">안녕하세요. 반갑습니다.</div>
+            <div class="textbox">반가워 오늘 메뉴 추천해줄 수 있어?</div>
         </div>
         <div class="chat ch2">
             <div class="icon"><i class="fa-solid fa-user"></i></div>
-            <div class="textbox">안녕하세요 잘지내셨나요?</div>
+            <div class="textbox">그럼요! 따로 원하시는 카테고리가 있으신가요?</div>
         </div>
         </div>
         <div class="input-group">
+            <!-- 사용자 입력을 받을 입력 상자 -->
             <input type="text" id="user-input" class="form-control" placeholder="메시지를 입력하세요">
             <div class="input-group-append">
+                <!-- 전송 버튼 -->
                 <button id="send-button" class="btn btn-primary">전송</button>
             </div>
         </div>
     </div>
 </body>
+<script type="module" src="main.js"></script>
 </html>
 
