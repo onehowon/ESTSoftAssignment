@@ -34,7 +34,7 @@ function handleEnterKey(event) {
 
 async function fetchAndAnswer(userMessage) {
     try {
-        const url = 'https://estsoft-openai-api.jejucodingcamp.workers.dev/';
+        const url = '';
 
         const requestOptions = {
             method: 'POST',
