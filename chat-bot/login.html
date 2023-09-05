@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 화면</title>
+</head>
+<style>
+    h1{
+        text-align:center;
+        font-size:50px;
+        line-height:30px;
+    }
+
+    p{
+        font-size:20px;
+        text-align: center;
+        color: gray;
+    }
+
+    body{
+        margin:0;
+        text-align:center;
+    }
+
+    input{
+        width:600px;
+        padding:20px;
+        border:none;
+        color:inherit;
+    }
+
+    input::placeholder{
+        color:black;
+        font-weight: bold;
+        font-size:18px;
+    }
+
+    #save-id{
+        width:10px;
+        position:relative;
+        right:160px;
+        zoom: 1.5;
+    }
+    #auto-login{
+        width:10px;
+        position:relative;
+        right:160px;
+        zoom: 1.5;
+    }
+
+    input[id="user-id"], input[id="user-pw"]{
+        border : solid 1px black;
+        margin: 15px;
+    }
+
+    label[for="save-id"],
+    label[for="auto-login"]{
+        font-size: 20px;
+        position:relative;
+        right:230px;
+        margin: 10px;
+    }
+
+    input[type="button"][value="로그인"]{
+        background-color:blue;
+        color:white;
+        margin-top: 30px;
+        font-size:20px;
+        font:bolder;
+        width:500px;
+        height:70px;
+        border-radius:5px;
+    }
+
+    a[href="join.html"] input[type="button"][value="회원가입"]{
+        background-color:blue;
+        color:white;
+        margin-top: 30px;
+        font-size:20px;
+        font:bolder;
+        width:500px;
+        height:70px;
+        border-radius:5px;
+    }
+
+
+</style>
+<body>
+    <form method="GET">
+        <h1>로그인</h1>
+        <p>아이디와 비밀번호를 입력하고 로그인해주세요</p>
+
+        <label input="user-id"></label>
+        <input id="user-id" type="text" name="user-id" placeholder="아이디" required>
+        <br>
+        <label input="user-pw"></label>
+        <input id="user-pw" type="password" name="user-pw" placeholder="비밀번호" required>
+
+        <br>
+
+        <input type="checkbox" id="save-id"/>
+        <label for="save-id">아이디 저장</label>
+        <br>
+        <input type="checkbox" id="auto-login">
+        <label for="auto-login">자동 로그인</label>
+        <br>
+
+        <!-- 로그인은 onclick 옵션을 줘서 눌렀을 때 login() 함수를 실행 -->
+        <input type="button" value="로그인" onclick="login();">
+        <!-- 회원가입 버튼 누르면 join.html(회원가입 페이지)로 이동할 수 있도록 함 -->
+        <a href="join.html"><input type="button" value="회원가입"></a>
+    </form>
+</body>
+<script src="common.js"></script>
+</html>

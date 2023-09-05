@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <div>
+        <label> 아이디 : <input id="id" type="text" required></label>
+    </div>
+    <!-- password type으로 체크해야 비밀번호 음영처리 -->
+    <div>
+        <label> 비밀번호 : <input id="pw" type="password" required></label>
+    </div>
+    <div>
+        <label> 비밀번호 확인 : <input id="check-pw" type="password" required></label>
+    </div>
+
+    <!-- show() 함수에서 회원가입 축하화면 만들기 -->
+    <div>
+        <input type="button" value="뒤로 가기" onclick="back();">
+        <input type="button" value="계정 생성" onclick="show();">
+    </div>
+    
+</body>
+<script src="common.js"></script>
+</html>

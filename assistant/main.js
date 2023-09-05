@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify([
-                    {"role": "system", "content": "assistant는 본문 내용 요약 전문가이다."},
+                    {"role": "system", "content": "assistant는 글 내용을 요약해주는 전문가이다."},
                     {"role": "user", "content": newsText}
                 ]),
             };
