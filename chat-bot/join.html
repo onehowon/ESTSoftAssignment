@@ -5,6 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
 </head>
+<style>
+    body{
+        background-color:white;
+        font-weight:bold;
+    }
+    div{
+        text-align:center;
+        padding:10px;
+        font-size:30px;
+        color:black;
+    }
+    label input[type="text"],
+    label input[type="password"]{
+        height:30px;
+        width:500px;
+        border: 2px solid transparent;
+        display:inline-block;
+        margin: 0 15px 10px 0;
+        padding-bottom:5px;
+        margin-right:15px;
+        font-size:22px;
+        background-color: lightgray;
+        border-radius:2px;
+    }
+
+    input[type="button"]{
+        width:100%;
+        color:black;
+        font-weight:bolder;
+        border-radius:25px;
+        padding:15px 20px;
+        border:none;
+    }
+</style>
 <body>
     <div>
         <label> 아이디 : <input id="id" type="text" required></label>
