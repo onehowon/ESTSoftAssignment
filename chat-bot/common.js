@@ -8,7 +8,7 @@ function login(){
     }
 
     else{
-        location.href = "index.html";
+        location.href = "main.html";
     }
 }
 
@@ -26,6 +26,7 @@ function show(){
     }
     else{
         if(pw.value == check_pw.value){
+            alert("회원가입에 성공했습니다! 확인을 누르면 로그인 화면으로 이동합니다.")
             location.href = 'login.html';
         }
         else{

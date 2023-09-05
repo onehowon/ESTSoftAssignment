@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function fetchAndSummarize(newsText) {
         try {
             // OpenAI API 엔드포인트 URL
-            const url = 'https://estsoft-openai-api.jejucodingcamp.workers.dev/';
+            const url = '';
 
             // OpenAI API 호출 및 요약 결과 반환하는 코드 작성
             const requestOptions = {
