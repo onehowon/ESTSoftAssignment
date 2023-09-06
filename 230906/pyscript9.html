@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Writing to the page</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <div id = "test" class="one"></div>
+    <input id="test2" type="text">
+    <button id = "test3" py-click="functiontest()">불러옵니다.</button>
+    <div id="test4"></div>
+    <py-script>
+    def functiontest(e):
+        test4 = Element('test4')
+        test4.write(test2.element.value)
+
+    test = Element('test')
+    test.write('hello')
+    test2 = Element('test2')
+    </py-script>
+
+</body>
+</html>
