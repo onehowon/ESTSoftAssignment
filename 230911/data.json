@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "6019fd4354979ca26b8f91dc",
+    "age": 26,
+    "eyeColor": "green",
+    "name": "Bender Allen",
+    "gender": "male"
+  },
+  {
+    "_id": "6019fd43db2951868889a0b4",
+    "age": 27,
+    "eyeColor": "blue",
+    "name": "Jacobs Golden",
+    "gender": "male"
+  },
+  {
+    "_id": "6019fd438c0bf8e775c28536",
+    "age": 27,
+    "eyeColor": "brown",
+    "name": "Grimes Oneal",
+    "gender": "male"
+  },
+  {
+    "_id": "6019fd43b68a7fd8b081ab26",
+    "age": 40,
+    "eyeColor": "blue",
+    "name": "Melissa Joyce",
+    "gender": "female"
+  },
+  {
+    "_id": "6019fd436c1edc4757aabb9d",
+    "age": 32,
+    "eyeColor": "blue",
+    "name": "Malone Bush",
+    "gender": "male"
+  },
+  {
+    "_id": "6019fd438eaf753918f55226",
+    "age": 34,
+    "eyeColor": "green",
+    "name": "Davenport Hyde",
+    "gender": "male"
+  },
+  {
+    "_id": "6019fd43c35929ff95004109",
+    "age": 20,
+    "eyeColor": "blue",
+    "name": "Shauna Blevins",
+    "gender": "female"
+  }
+]
