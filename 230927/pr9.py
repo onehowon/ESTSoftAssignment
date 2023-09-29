@@ -46,3 +46,4 @@ for i in range(len(유일성만족리스트)):
             
 len(유일성만족리스트) - 유일성만족리스트.count('!')
 print(인덱스)
+print(유일성만족리스트)
