@@ -16,3 +16,5 @@ def solution(스테이지수, 스테이지):
 
 n,stages = (5,[2,1,2,6,2,4,3,3])
 print(solution(n,stages))
+
+print(solution)
