@@ -55,3 +55,4 @@ def main():
 
 
 main()
+print(main())
