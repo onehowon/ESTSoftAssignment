@@ -1,46 +1,19 @@
 # blog/views.py
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-from .models import Post
-from .forms import PostForm
+...
+from django.contrib import messages
 
 
-def post_list(request):
-    post_list = Post.objects.all()
-    return render(request, 'blog/post_list.html', {'post_list': post_list})
-
-
-def post_create(request):
+def login_view(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save()
-            return redirect('blog:detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'blog/post_form.html', {'form': form})
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, '로그인이 되었습니다.')
+            return redirect('/login')
+        else:
+            messages.error(request, '아이디 또는 비밀번호가 올바르지 않습니다.')
+    return render(request, 'blog/login.html')
 
-
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
-
-
-def post_update(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            post = form.save()
-            return redirect('blog:detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/post_form.html', {'form': form})
-
-
-def post_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        post.delete()
-        return redirect('blog:list')
-    return render(request, 'blog/post_confirm_delete.html', {'post': post})
+...

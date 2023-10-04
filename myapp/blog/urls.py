@@ -1,22 +1,25 @@
-from django.contrib import admin
+# blog/urls.py
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from django.urls import path
-from blog.views import index, a, b, c, d, e, about, blogdetails
+from . import views  # 뷰 모듈을 임포트합니다.
 
-
-# path(url, url 연결 함수)
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index),
-    path('a/', a),
-    path('b/', b),
-    path('c/', c),
-    path('d/', d),
-    path('e/', e),
-    path('about/', about),
-    # path('blogdetails/<int:pk>', blogdetails),
-    # path('blogdetails/<str:s>', blogdetails),
+    path('login/', views.login_view, name='login'),  # '/login/' URL에 login_view를 연결합니다.
+    # 다른 URL 패턴들을 필요에 따라 추가할 수 있습니다.
 ]
 
-def blogdetails(request, s): # urls.py에서 pk로 해주었으면 pk, s로 해주었으면 s
-    print(s)
-    return render(request, 'blog/blogdetails.html')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, '로그인 되었습니다.')
+            return redirect('login')
+        else:
+            messages.error(request, '아이디 또는 비밀번호가 올바르지 않습니다.')
+    return render(request, 'blog/login.html')
