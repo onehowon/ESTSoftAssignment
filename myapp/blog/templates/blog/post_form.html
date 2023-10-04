@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% if post_update %}
+        <h1>블로그 글 수정하기</h1>
+    {% else %}
+        <h1>블로그 글 등록하기</h1>
+    {% endif %}
+{% endblock %}

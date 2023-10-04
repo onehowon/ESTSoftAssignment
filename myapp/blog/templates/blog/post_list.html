@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>나의 블로그</h1>
+    <a href="{% url 'create' %}" class="btn btn-primary">글 작성</a>
+    <ul>
+        {% if post_list %}
+            {% for post in post_list %}
+                <li><a href="{% url 'post_detail' post.pk %}">{{post.title}}</a></li>
+            {% endfor %}
+        {% else %}
+            <p>아직 글이 작성되지 않았습니다.</p>
+        {% endif %}
+    </ul>
+{% endblock %}
