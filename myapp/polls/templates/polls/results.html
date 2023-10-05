@@ -3,7 +3,8 @@
 <ul>
     {% for choice in question.choice_set.all %}
         <li>
-            {{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes||pluralize}}
+            {% comment %} 복수인 경우에 복수 처리, 단수인 경우에 단수처리 {% endcomment %}
+            {{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}
         </li>
         {% endfor %}
 </ul>
