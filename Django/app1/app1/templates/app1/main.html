@@ -14,7 +14,9 @@
     href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
     rel="stylesheet">
 
-  <title>여기에 진스타그램 만들꺼임 </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <title>잉숙타그램 </title>
 </head>
 
 <style>
@@ -157,6 +159,12 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 1280px){
+  .right_body{
+    display:none;
+  }
+}
+
 .modal_overlay{
   width:100%;
   height:100%;
@@ -182,6 +190,69 @@
   height:600px;
   position: relative;
   padding: 10px;
+}
+
+.modal_title{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size:20px;
+}
+
+.modal_title_side{
+  flex: 0 0 40px;
+  text-align:center;
+}
+
+.modal_image_upload{
+  outline: 2px dashed black;
+  outline-offset:-10px;
+  text-align:center;
+  transition: all .15s ease-in-out;
+  width:780px;
+  height: 548px;
+}
+
+.modal_image_upload_content{
+  outline:2px dashed black;
+  outline-offset: -10px;
+  text-align: center;
+  transition: all .15s ease-in-out;
+  width:500px;
+  height:548px;
+}
+
+.modal_image_content{
+  display:flex;
+  flex-direction: row;
+}
+
+.modal_content_write{
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(0,0,0, 0.18);
+}
+
+.feed_content_textarea{
+  resize:none;
+  width:294px;
+  border:none;
+}
+
+.modal{
+  width:100%;
+  height:100%;
+  position: absolute;
+  left:0;
+  top:0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0, 0.8);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
 }
 
 </style>
@@ -348,6 +419,55 @@
   </div>
 </div>
 
+<div id="modal_add_feed" class="modal_overlay">
+  <div class="modal_window">
+    <div class="modal_title">
+      <div class="modal_title_side"></div>
+      <div> 새 게시물 </div>
+      <div class="modal_title_side">
+        <span id="close_modal" class="material-icons-outlined">
+          close
+        </span>
+      </div>
+    </div>
+    <div class="modal_image_upload">
+      <span style="text-align: center">사진을 여기에 끌어다 놓으세요.</span>
+    </div>
+  </div>
+</div>
+
+<div id = "modal_add_feed_content" class="modal modal_overlay_content">
+  <div class="modal_window">
+    <div class="modal_title">
+      <div class="modal_title_side"></div>
+      <div style="margin: 5px">새 게시물</div>
+      <div class="modal_title_side">
+        <span id="close_modal" class="close_modal material-icons-outlined" style="font-size : 30px">
+          close
+        </span>
+      </div>
+    </div>
+    <div class="modal_image_content">
+      <div id="input_image" class="modal_image_upload_content">
+      </div>
+      <div class="modal_content_write">
+        <div class="feed_name">
+          <div class="profile_box">
+            <img id="input_profile_image" class="profile_img" src="https://i.namu.wiki/i/oqIn7FT848HeXZIwK7VZXUIA2eEfLlwC5u4dr6yiwJkL4mb9SiMa3izrqT-2kGjkEv9LWd78U5_TYuwsCy-SE0g7Wr6IRmNRVnbNIE4uEKmu83CC2TYbWxWHYTKW-RqVt3Yr9qm-iESJ8HALdGH76w.webp">
+          </div>
+          <span id="input_user_id" class="feed_name_txt">jin.99</span>
+        </div>
+        <div style="height: 440px">
+          <textarea id="input_content" class="feed_content_textarea form-control col-sm-5" rows="10" placeholder="설명을 입력하세요...."></textarea>
+        </div>
+        <div style="width:100%; text-align:center">
+          <button id="button_write_feed" type="button" class="btn btn-primary" style="width:268px">공유하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- Optional JavaScript; choose one of the two! -->
@@ -355,18 +475,81 @@
   const modal = document.getElementById("modal_add_feed");
   const buttonAddFeed = document.getElementById("add_feed");
   buttonAddFeed.addEventListener("click", e => {
-    modal.style.display = "flex";
+      modal.style.display = "flex";
+      modal.style.top = window.pageYOffset + 'px';
+      document.body.style.overflowY = "hidden"; // 스크롤 없애기
   });
+
+  const buttonCloseModal = document.getElementById("close_modal");
+  buttonCloseModal.addEventListener("click", e => {
+    modal.style.display = "none";
+    document.body.style.overflowY = "visible";
+  });
+
+  <!-- jquery 부분 -->
+
+  $('.modal_image_upload')
+  .on("dragover", dragOver)
+  .on("dragleave", dragOver)
+  .on("drop", uploadFiles);
+
+  function dragOver(e){
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (e.type == "dragover"){
+      $(e.target).css({
+        "background-color" : "black",
+        "outline-offset": "-20px"
+      });
+
+    } else {
+      $(e.target).css({
+        "background-color" : "white",
+        "outline-offset" : "-10px"
+      });
+    }
+  }
+
+  function uploadFiles(e){
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(e.dataTransfer)
+    console.log(e.originalEvent.dataTransfer)
+
+    e.dataTransfer = e.originalEvent.dataTransfer;
+    files = e.dataTransfer.files;
+
+    if (files.length > 1){
+      alert('하나만 올리세요');
+      return;
+    }
+
+    if(files[0].type.match(/image.*/)){
+      $(e.target).css({
+        display: 'flex'});
+        $('.modal_image_upload_content').css({
+          "background-image": "url("+window.URL.createObjectURL(files[0])+")",
+          "outline" : "none",
+          "background-repeat" : "no-repeat",
+          "background-size" : "contain",
+          "background-position" : "center"
+        });
+        $('#modal_add_feed').css({
+          display:'none'
+        })
+
+      }else{
+        alert("이미지가 압닙니다.");
+      }
+    }
 </script>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
-<div id="modal_add_feed" class="modal_overlay">
-  <div class="modal_window">
-  </div>
-</div>
+
 
 </body>
 </html>
