@@ -157,6 +157,33 @@
     flex-direction: column;
 }
 
+.modal_overlay{
+  width:100%;
+  height:100%;
+  position:absolute;
+  left:0;
+  top:0;
+  display:none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0, 0.8);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+}
+
+.modal_window{
+  background:white;
+  backdrop-filter: blur(13.5px);
+  -webkit-backdrop-filter: blur(13.5px);
+  border-radius : 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width:800px;
+  height:600px;
+  position: relative;
+  padding: 10px;
+}
+
 </style>
 
 <body>
@@ -170,7 +197,7 @@
     <div>
       <span class="material-icons">home</span>
       <span class="material-icons">send</span>
-      <span class="material-icons-outlined">add_box</span>
+      <span id="add_feed" class="material-icons-outlined">add_box</span>
       <span class="material-icons-outlined">explore</span>
       <span class="material-icons-outlined">favorite_border</span>
     </div>
@@ -180,14 +207,15 @@
 <!-- 바디 영역 -->
 <div class="main_body">
   <div class="left_body">
+    {% for feed in feed_list %}
     <div class="border feed_box">
       <div class="feed_name">
         <div class="profile_box">
-          <img class="profile_img" src="https://i.namu.wiki/i/oqIn7FT848HeXZIwK7VZXUIA2eEfLlwC5u4dr6yiwJkL4mb9SiMa3izrqT-2kGjkEv9LWd78U5_TYuwsCy-SE0g7Wr6IRmNRVnbNIE4uEKmu83CC2TYbWxWHYTKW-RqVt3Yr9qm-iESJ8HALdGH76w.webp">
+          <img class="profile_img" src="{{ feed.profile_image }}">
         </div>
-        <span class="feed_name_txt"> jin.99 </span>
+        <span class="feed_name_txt"> {{ feed.user_id }}</span>
       </div>
-      <img class="feed_img" src="https://mblogthumb-phinf.pstatic.net/MjAxNzA2MTFfMjc1/MDAxNDk3MTcyMDgyNzEw.ID5RyHWKvsVEW2NS9EQGyRYX7vUaXr7znQeuTrRRmdIg.gK7MD7VhNJPkV4_dueiWer2y-oH7NAAmEklF-6bbYyQg.JPEG.jejubyeol/%EC%97%AC%EB%A6%84%EC%97%90_%EC%A0%9C%EC%A3%BC%EB%8F%84_%EC%82%AC%EC%A7%84%EC%B0%8D%EA%B8%B0_%EC%A2%8B%EC%9D%80%EA%B3%B3.jpg?type=w800">
+      <img class="feed_img" src="{{ feed.image }}">
 
       <div class="feed_icon">
         <div>
@@ -208,55 +236,19 @@
         </div>
       </div>
       <div class="feed_like">
-        <p class="feed_txt"> <b>좋아요 10개</b></p>
+        <p class="feed_txt"> <b>좋아요 {{ feed.like_count }}개</b></p>
       </div>
       <div class="feed_content">
-        <p class="feed_txt"> <b> jin.99 </b> 코로나라서 해외여행을 못가니 최근 제주도 가는사람이 늘고있습니다~ 제주도도 조심해야되는건 마찬가지~!</p>
+        <p class="feed_txt"> <b> {{ feed.user_id }} </b> {{ feed.content }}</p>
       </div>
       <div class="feed_reply">
-        <span class="feed_txt"> <b> mychew </b> 제주도 가고 싶어요 ㅠㅠ</span>
-        <span class="feed_txt"> <b> cho </b> 제주도  ㄱ ㄱ </span>
+        <span class="feed_txt"> <b> mychew </b> 댓글은 아직 모델을 안만들어서 </span>
+        <span class="feed_txt"> <b> cho </b> 항상 이 두개가 나옵니다 ㅋㅋ </span>
       </div>
     </div>
-    <div class="border feed_box">
-      <div class="feed_name">
-        <div class="profile_box">
-          <img class="profile_img" src="https://i.namu.wiki/i/oqIn7FT848HeXZIwK7VZXUIA2eEfLlwC5u4dr6yiwJkL4mb9SiMa3izrqT-2kGjkEv9LWd78U5_TYuwsCy-SE0g7Wr6IRmNRVnbNIE4uEKmu83CC2TYbWxWHYTKW-RqVt3Yr9qm-iESJ8HALdGH76w.webp">
-        </div>
-        <span class="feed_name_txt"> jin.99 </span>
-      </div>
-      <img class="feed_img" src="https://mblogthumb-phinf.pstatic.net/MjAxNzA2MTFfMjc1/MDAxNDk3MTcyMDgyNzEw.ID5RyHWKvsVEW2NS9EQGyRYX7vUaXr7znQeuTrRRmdIg.gK7MD7VhNJPkV4_dueiWer2y-oH7NAAmEklF-6bbYyQg.JPEG.jejubyeol/%EC%97%AC%EB%A6%84%EC%97%90_%EC%A0%9C%EC%A3%BC%EB%8F%84_%EC%82%AC%EC%A7%84%EC%B0%8D%EA%B8%B0_%EC%A2%8B%EC%9D%80%EA%B3%B3.jpg?type=w800">
+    {% endfor %}
 
-      <div class="feed_icon">
-        <div>
-          <span class="material-icons-outlined">
-            favorite_border
-          </span>
-          <span class="material-icons-outlined">
-            mode_comment
-          </span>
-          <span class="material-icons-outlined">
-            send
-          </span>
-        </div>
-        <div>
-          <span class="material-icons-outlined">
-            turned_in_not
-          </span>
-        </div>
-      </div>
-      <div class="feed_like">
-        <p class="feed_txt"> <b>좋아요 10개</b></p>
-      </div>
-      <div class="feed_content">
-        <p class="feed_txt"> <b> jin.99 </b> 코로나라서 해외여행을 못가니 최근 제주도 가는사람이 늘고있습니다~ 제주도도 조심해야되는건 마찬가지~!</p>
-      </div>
-      <div class="feed_reply">
-        <span class="feed_txt"> <b> mychew </b> 제주도 가고 싶어요 ㅠㅠ</span>
-        <span class="feed_txt"> <b> cho </b> 제주도  ㄱ ㄱ </span>
-      </div>
-    </div>
-  </div>
+
   <div class="right_body">
     <div class="feed_name" style="justify-content: space-between">
       <div style="display: flex; align-items: center; ">
@@ -359,17 +351,22 @@
 
 
 <!-- Optional JavaScript; choose one of the two! -->
-
+<script>
+  const modal = document.getElementById("modal_add_feed");
+  const buttonAddFeed = document.getElementById("add_feed");
+  buttonAddFeed.addEventListener("click", e => {
+    modal.style.display = "flex";
+  });
+</script>
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
--->
+<div id="modal_add_feed" class="modal_overlay">
+  <div class="modal_window">
+  </div>
+</div>
 
 </body>
 </html>
