@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import Main
+from .views import Main, UploadFeed
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', Main.as_view()),
-    path('admin/', admin.site.urls),
+    path('instagram/upload', admin.site.urls),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
